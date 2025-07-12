@@ -1,3 +1,4 @@
+// Teacher interface
 interface Teacher {
     firstName: string,
     lastName: string,
@@ -6,7 +7,7 @@ interface Teacher {
     location: string,
     [key: string]: any
 }
-
+// Director interface
 interface Directors extends Teacher {
     numberOfReports: number
 }
@@ -18,8 +19,19 @@ interface printTeacherFunction {
 const printTeacher: printTeacherFunction = (firstName, lastName) => {
     return `${firstName[0]}. ${lastName}`;
 }
+// student class
+interface StudentClassInterface {
+    firstName: string,
+    lastName: string,
+    workOnHomeWork(): string,
+    displayName(): string,
+}
 
-class StudentClass {
+interface StudentClassConstructor {
+    new (firstName: string, lastName: string): StudentClassInterface;
+}
+
+class StudentClass implements StudentClassInterface {
     public firstName: string;
     public lastName: string;
 
@@ -28,12 +40,12 @@ class StudentClass {
         this.lastName = lastName
     }
 
-    workOnHomework(): string {
+    workOnHomeWork(): string {
         return "Currently working";
     }
 
     displayName(): string {
-        return this.firstName
+        return this.firstName;
     }
 }
 const student101: StudentClass = new StudentClass("Viv", "Ekpe");
